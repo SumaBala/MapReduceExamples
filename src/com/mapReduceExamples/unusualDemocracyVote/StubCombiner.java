@@ -10,7 +10,7 @@ import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
-public class StubCombiner extends Reducer<Text, Text, Text, LongWritable> {
+public class StubCombiner extends Reducer<Text, Text, Text, Text> {
 
   @Override
   public void reduce(Text key, Iterable<Text> values, Context context)
@@ -32,12 +32,12 @@ public class StubCombiner extends Reducer<Text, Text, Text, LongWritable> {
 		  }		  
 	  }	  	  
 	  System.out.println("combiner Output : "+key + " "+0);
-	  context.write( new Text(key)  , new LongWritable(0));
+	  context.write( new Text(key)  , new Text("0"));
 	  	  
 	  for(Object voter:(voters.toArray())) 
 	  {
 		  System.out.println("combiner Output : "+voter.toString() + " "+ worth);
-		  context.write( new Text(voter.toString())  ,  new LongWritable(worth));
+		  context.write( new Text(voter.toString())  ,  new Text(Integer.toString(worth)));
 	  }
   }
 }

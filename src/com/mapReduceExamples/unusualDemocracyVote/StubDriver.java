@@ -26,7 +26,7 @@ public class StubDriver {
 		job.setReducerClass(StubCombiner.class);
 		
 		job.setOutputKeyClass(Text.class);
-		job.setOutputValueClass(LongWritable.class);
+		job.setOutputValueClass(Text.class);
 		
 		job.setMapOutputKeyClass(Text.class);
 		job.setMapOutputValueClass(Text.class);

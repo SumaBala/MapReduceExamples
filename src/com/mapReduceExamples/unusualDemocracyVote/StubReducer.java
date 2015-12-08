@@ -10,7 +10,7 @@ import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
-public class StubReducer extends Reducer<Text, Text, Text,LongWritable> {
+public class StubReducer extends Reducer<Text, Text, Text,Text> {
 
   @Override
   public void reduce(Text key, Iterable<Text> values, Context context)
@@ -25,7 +25,7 @@ public class StubReducer extends Reducer<Text, Text, Text,LongWritable> {
 	  {
 		  value = (iw.toString());	
 		  try {
-			  sum += Integer.parseInt(value.toString());
+			  sum += Integer.parseInt(value);
 		  }
 		  catch (Exception e) {
 		  }
@@ -33,6 +33,6 @@ public class StubReducer extends Reducer<Text, Text, Text,LongWritable> {
 	  }	  
 
 	  System.out.println("Reducer  Output : "+key + " "+ sum);
-	  context.write( new Text(key)  , new LongWritable( sum));
+	  context.write( new Text(key)  , new Text( Integer.toString(sum)));
   }
 }
