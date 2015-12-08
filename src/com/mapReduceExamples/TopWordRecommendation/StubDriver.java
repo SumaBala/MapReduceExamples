@@ -1,4 +1,4 @@
-package com.mapReduceExamples.DNA;
+package com.mapReduceExamples.TopWordRecommendation;
 
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.LongWritable;
@@ -13,11 +13,13 @@ public class StubDriver {
 
 	public static void main(String[] args) throws Exception {
 		if (args.length < 2) {
-			System.out.printf("Usage: StubDriver <input dir> <output dir>\n");
+			System.out.println("Usage: StubDriver <input dir> <output dir>\n");
+			System.out.println("args"+args.toString());
+			System.out.println("args"+args.length);
 			System.exit(-1);
 		}
 		JobConf conf = new JobConf();
-		Job job = new Job(conf, "DNA");
+		Job job = new Job(conf, "TopWordRecommendation");
 		job.setJarByClass(StubDriver.class);
 		
 		job.setMapperClass(StubMapper.class);

@@ -1,4 +1,4 @@
-package com.mapReduceExamples.DNA;
+package com.mapReduceExamples.MirrorImageDNA;
 
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.LongWritable;
@@ -17,7 +17,7 @@ public class StubDriver {
 			System.exit(-1);
 		}
 		JobConf conf = new JobConf();
-		Job job = new Job(conf, "DNA");
+		Job job = new Job(conf, "MirrorImageDNA");
 		job.setJarByClass(StubDriver.class);
 		
 		job.setMapperClass(StubMapper.class);

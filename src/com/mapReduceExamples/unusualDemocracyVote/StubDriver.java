@@ -1,4 +1,4 @@
-package com.mapReduceExamples.DNA;
+package com.mapReduceExamples.unusualDemocracyVote;
 
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.LongWritable;
@@ -17,14 +17,17 @@ public class StubDriver {
 			System.exit(-1);
 		}
 		JobConf conf = new JobConf();
-		Job job = new Job(conf, "DNA");
+		Job job = new Job(conf, "unusualDemocracyVote");
 		job.setJarByClass(StubDriver.class);
+		//job.setNumReduceTasks(2);
 		
 		job.setMapperClass(StubMapper.class);
-		job.setReducerClass(StubReducer.class);
+		job.setCombinerClass(StubReducer.class);
+		job.setReducerClass(StubCombiner.class);
 		
 		job.setOutputKeyClass(Text.class);
-		job.setOutputValueClass(Text.class);
+		job.setOutputValueClass(LongWritable.class);
+		
 		job.setMapOutputKeyClass(Text.class);
 		job.setMapOutputValueClass(Text.class);
 		
